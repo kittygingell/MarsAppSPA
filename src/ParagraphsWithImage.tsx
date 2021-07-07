@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NasaParagraph from "./NasaParagraph";
+import NasaParagraph1 from "./NasaParagraph1";
 import NasaImage from "./NasaImage";
 import NasaParagraph2 from "./NasaParagraph2";
 export default class ParagraphsWithImage extends Component {
@@ -8,7 +8,7 @@ export default class ParagraphsWithImage extends Component {
         return (<>
             <h1>NASA INFORMATION</h1>
         <div>
-            <NasaParagraph/>
+            <NasaParagraph1/>
         </div>
                 <NasaImage/>
                 <div>
