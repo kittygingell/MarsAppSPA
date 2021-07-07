@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import NasaParagraph from "./NasaParagraph";
+import NasaParagraph1 from "./NasaParagraph1";
 import NasaImage from "./NasaImage";
+import NasaParagraph2 from "./NasaParagraph2";
 export default class ParagraphsWithImage extends Component {
 
     render() {
         return (<>
-            <h1>NASA INFO</h1>
+            <h1>NASA INFORMATION</h1>
         <div>
-            <NasaParagraph/>
+            <NasaParagraph1/>
         </div>
                 <NasaImage/>
                 <div>
-            <p>A Mars Rover</p>
+            <NasaParagraph2/>
         </div></>
         )
     }
