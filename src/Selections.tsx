@@ -8,7 +8,7 @@ const Selections = () => {
     };
 
     const curiosityCams = [
-        "Choose a camera",
+        "Choose a Camera",
         "Front Hazard Avoidance Camera",
         "Rear Hazard Avoidance Camera",
         "Mast Camera",
@@ -18,12 +18,12 @@ const Selections = () => {
         "Navigation Camera"
     ];
     const opportunityAndSpiritCams = [
-        "Choose a camera",
+        "Choose a Camera",
         "Front Hazard Avoidance Camera",
         "Rear Hazard Avoidance Camera",
         "Navigation Camera",
         "Panoramic Camera",
-        "\tMiniature Thermal Emission Spectrometer"
+        "Miniature Thermal Emission Spectrometer"
     ];
 
     let type = null;
