@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import ParagraphsWithImage from "./ParagraphsWithImage";
-import Button from "./Button";
 import ContextUsingButton from './ContextUsingButton'
 import CounterValueViewer from "./CounterValueViewer";
-import RoverSelect from './RoverSelect'
+import Selections from "./Selections";
 
 export const CounterContext = React.createContext({
     count: 0,
@@ -35,7 +34,7 @@ function App() {
                 setCount(newCount)
             }
         }}>
-            <RoverSelect/>
+            <Selections/>
             <div className="App">
                 <ParagraphsWithImage heading={'NASA stuff'} paragraph1={'Paragraph for NASA stuff'} paragraph2={'Another paragraph'} image={"https://media0.giphy.com/media/3h4EVXAvarDaaRaeYX/source.gif"}/>
                 <ContextUsingButton/>
