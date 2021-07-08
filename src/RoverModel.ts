@@ -16,9 +16,13 @@ export enum RoverCameraType {
     MINITES = 'Miniature Thermal Emission Spectrometer (Mini-TES)'
 }
 
-export function getEnumKeyByEnumValue(myEnum: any, enumValue: number | string): string {
+export function getEnumKeyByEnumValue(myEnum: any, enumValue: string): string {
     let keys = Object.keys(myEnum).filter((x) => myEnum[x] == enumValue);
     return keys.length > 0 ? keys[0] : '';
+}
+
+export function getEnumByEnumValue(myEnum: any, enumValue: string): any {
+    return myEnum[getEnumKeyByEnumValue(myEnum, enumValue)]
 }
 
 export interface RoverCameraData {

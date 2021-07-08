@@ -1,6 +1,6 @@
 import React from 'react'
-import {RoverCameraType, RoverName} from "./RoverModel";
-
+import {getEnumByEnumValue, RoverCameraType, RoverName} from "./RoverModel";
+import {PhotoTypeContext} from "./App";
 
 interface AvailableCameraTypes {
     roverName: RoverName,
@@ -49,59 +49,51 @@ function roverName2CameraTypes(roverName:RoverName) {
     return cameraTypes[0].cameraTypes
 }
 
-
 const Selections = () => {
-
-    const [selectedRover, setSelected] = React.useState("");
-    const changeSelectOptionHandler = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-        setSelected(event.target.value);
-    };
-    const [selectedCamera, setSelectedCamera] = React.useState("");
-    const changeSelectCamera = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-        setSelectedCamera(event.target.value);
-    };
-
-    let type = null;
-    let options = null;
-    if (selectedRover === "Curiosity") {
-        type = roverName2CameraTypes(RoverName.curiosity);
-    } else if (selectedRover === "Opportunity") {
-        type = roverName2CameraTypes(RoverName.opportunity);
-    } else if (selectedRover === "Spirit") {
-        type = roverName2CameraTypes(RoverName.spirit);
-    }
-
-    if (type) {
-        options = type.map((el) => <option key={el}>{el}</option>);
-    }
     return (
-        <div
-            style={{
-                padding: "16px",
-                margin: "16px",
+        <PhotoTypeContext.Consumer>
+            {value => {
+
+                const currentRoverName = value.roverName
+                const availableCameraTypes = roverName2CameraTypes(currentRoverName)
+                const options = availableCameraTypes.map((cameraType) =>{
+                    return (<option key={cameraType}>{cameraType}</option>)
+                })
+
+                return (
+                    <div style={{padding: "16px", margin: "16px",}}>
+                        <form>
+                            <div>
+                                Rover type:&nbsp;
+                                <select onChange={ (event) => {
+                                    const roverDict: any = {
+                                        'Curiosity': RoverName.curiosity,
+                                        'Spirit': RoverName.spirit,
+                                        'Opportunity': RoverName.opportunity
+                                    }
+
+                                    const roverName: RoverName = roverDict[event.target.value]
+                                    value.updateRoverName(roverName)
+                                }}>
+                                    <option>Curiosity</option>
+                                    <option>Spirit</option>
+                                    <option>Opportunity</option>
+                                </select>
+                            </div>
+                            <div>
+                                Camera type:&nbsp;
+                                <select onChange={ (event) => {
+                                    const cameraType: RoverCameraType = getEnumByEnumValue(RoverCameraType, event.target.value)
+                                    value.updateCameraType(cameraType)
+                                }}>
+                                    {options}
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                )
             }}
-        >
-            <form>
-                <div>
-                    {}
-                    <select onChange={changeSelectOptionHandler}>
-                        <option>Choose a Rover</option>
-                        <option>Curiosity</option>
-                        <option>Spirit</option>
-                        <option>Opportunity</option>
-                    </select>
-                </div>
-                <div>
-                    <select onChange={changeSelectCamera}>
-                        {
-                            options
-                        }
-                    </select>
-
-                </div>
-            </form>
-        </div>
-
+        </PhotoTypeContext.Consumer>
     );
 };
 
