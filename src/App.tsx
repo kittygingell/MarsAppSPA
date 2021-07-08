@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import ParagraphsWithImage from "./ParagraphsWithImage";
 import Button from "./Button";
@@ -25,6 +25,10 @@ function App() {
     if (current == null) {
         storage.setItem(countVariableName, '0')
     }
+
+    useEffect(() => {
+        setCount(Number(storage.getItem(countVariableName)))
+    });
 
     return (
         <CounterContext.Provider value={{
