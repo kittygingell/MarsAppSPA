@@ -9,26 +9,15 @@ interface psWithImageProps {
     image: string
 }
 
-export default function ParagraphsWithImage(props: psWithImageProps) {
-    const props4Paragraph1 = {
-        paragraph: props.paragraph1
-    }
-    const props4Para2 = {
-        paragraph: props.paragraph2
-    }
-    const props4img = {
-        image: props.image
-    }
-
+const ParagraphsWithImage: React.FC<psWithImageProps> = ({heading, paragraph1, paragraph2, image}) =>{
 
     return (<>
-        <h1>{props.heading}</h1>
-    <div>
-        {NasaParagraph(props4Paragraph1)}
-    </div>
-        {NasaImage(props4img)}
-    <div>
-        {NasaParagraph(props4Para2)}
-    </div></>
+        <h1>{heading}</h1>
+        <NasaParagraph paragraph={paragraph1}/>
+        <NasaImage image={image}/>
+        <NasaParagraph paragraph={paragraph2}/>
+</>
     )
 }
+
+export default ParagraphsWithImage

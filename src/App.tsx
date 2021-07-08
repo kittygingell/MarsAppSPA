@@ -11,12 +11,6 @@ export const CounterContext = React.createContext({
 });
 
 function App() {
-    const psWithImageProps = {
-        heading: 'NASA stuff',
-        paragraph1: 'Paragraph for NASA stuff',
-        paragraph2: 'Another paragraph',
-        image: "https://media0.giphy.com/media/3h4EVXAvarDaaRaeYX/source.gif"
-    }
 
     const [count, setCount] = useState(0);
     const storage = window.localStorage
@@ -41,9 +35,9 @@ function App() {
             }
         }}>
             <div className="App">
-                {ParagraphsWithImage(psWithImageProps)}
-                {ContextUsingButton()}
-                {CounterValueViewer()}
+                <ParagraphsWithImage heading={'NASA stuff'} paragraph1={'Paragraph for NASA stuff'} paragraph2={'Another paragraph'} image={"https://media0.giphy.com/media/3h4EVXAvarDaaRaeYX/source.gif"}/>
+                <ContextUsingButton/>
+                <CounterValueViewer/>
             </div>
         </CounterContext.Provider>
   );
