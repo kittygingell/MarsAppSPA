@@ -5,15 +5,24 @@ export enum RoverName {
 }
 
 export enum RoverCameraType {
-    FHAZ,
-    RHAZ,
-    MAST,
-    CHEMCAM,
-    MAHLI,
-    MARDI,
-    NAVCAM,
-    PANCAM,
-    MINITES
+    FHAZ = 'Front Hazard Avoidance Camera',
+    RHAZ = 'Rear Hazard Avoidance Camera',
+    MAST = 'Mast Camera',
+    CHEMCAM = 'Chemistry and Camera Complex',
+    MAHLI = 'Mars Hand Lens Imager',
+    MARDI = 'Mars Descent Imager',
+    NAVCAM = 'Navigation Camera',
+    PANCAM = 'Panoramic Camera',
+    MINITES = 'Miniature Thermal Emission Spectrometer (Mini-TES)'
+}
+
+export function getEnumKeyByEnumValue(myEnum: any, enumValue: string): string {
+    let keys = Object.keys(myEnum).filter((x) => myEnum[x] == enumValue);
+    return keys.length > 0 ? keys[0] : '';
+}
+
+export function getEnumByEnumValue(myEnum: any, enumValue: string): any {
+    return myEnum[getEnumKeyByEnumValue(myEnum, enumValue)]
 }
 
 export interface RoverCameraData {

@@ -1,71 +1,99 @@
 import React from 'react'
+import {getEnumByEnumValue, RoverCameraType, RoverName} from "./RoverModel";
+import {PhotoTypeContext} from "./App";
+
+interface AvailableCameraTypes {
+    roverName: RoverName,
+    cameraTypes: RoverCameraType[]
+}
+
+const availableCameraTypes: AvailableCameraTypes[] = [
+    {
+        roverName: RoverName.curiosity,
+        cameraTypes: [
+            RoverCameraType.FHAZ,
+            RoverCameraType.RHAZ,
+            RoverCameraType.CHEMCAM,
+            RoverCameraType.MAHLI,
+            RoverCameraType.MAST,
+            RoverCameraType.MARDI,
+            RoverCameraType.NAVCAM
+        ]
+    },
+    {
+        roverName: RoverName.opportunity,
+        cameraTypes: [
+            RoverCameraType.FHAZ,
+            RoverCameraType.RHAZ,
+            RoverCameraType.NAVCAM,
+            RoverCameraType.PANCAM,
+            RoverCameraType.MINITES
+        ]
+    },
+    {
+        roverName: RoverName.spirit,
+        cameraTypes: [
+            RoverCameraType.FHAZ,
+            RoverCameraType.RHAZ,
+            RoverCameraType.NAVCAM,
+            RoverCameraType.PANCAM,
+            RoverCameraType.MINITES
+        ]
+    },
+]
+
+function roverName2CameraTypes(roverName:RoverName) {
+    const cameraTypes = availableCameraTypes.filter(elem => {
+        return elem.roverName === roverName
+    })
+    return cameraTypes[0].cameraTypes
+}
 
 const Selections = () => {
-
-    const [selected, setSelected] = React.useState("");
-    const changeSelectOptionHandler = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-        setSelected(event.target.value);
-    };
-
-    const curiosityCams = [
-        "Choose a Camera",
-        "Front Hazard Avoidance Camera",
-        "Rear Hazard Avoidance Camera",
-        "Mast Camera",
-        "Chemistry and Camera Complex",
-        "Mars Hand Lens Imager",
-        "Mars Descent Imager",
-        "Navigation Camera"
-    ];
-    const opportunityAndSpiritCams = [
-        "Choose a Camera",
-        "Front Hazard Avoidance Camera",
-        "Rear Hazard Avoidance Camera",
-        "Navigation Camera",
-        "Panoramic Camera",
-        "Miniature Thermal Emission Spectrometer"
-    ];
-
-    let type = null;
-    let options = null;
-    if (selected === "Curiosity") {
-        type = curiosityCams;
-    } else if (selected === "Opportunity") {
-        type = opportunityAndSpiritCams;
-    } else if (selected === "Spirit") {
-        type = opportunityAndSpiritCams;
-    }
-
-
-    if (type) {
-        options = type.map((el) => <option key={el}>{el}</option>);
-    }
     return (
-        <div
-            style={{
-                padding: "16px",
-                margin: "16px",
+        <PhotoTypeContext.Consumer>
+            {value => {
+
+                const currentRoverName = value.roverName
+                const availableCameraTypes = roverName2CameraTypes(currentRoverName)
+                const options = availableCameraTypes.map((cameraType) =>{
+                    return (<option key={cameraType}>{cameraType}</option>)
+                })
+
+                return (
+                    <div style={{padding: "16px", margin: "16px",}}>
+                        <form>
+                            <div>
+                                Rover type:&nbsp;
+                                <select onChange={ (event) => {
+                                    const roverDict: any = {
+                                        'Curiosity': RoverName.curiosity,
+                                        'Spirit': RoverName.spirit,
+                                        'Opportunity': RoverName.opportunity
+                                    }
+
+                                    const roverName: RoverName = roverDict[event.target.value]
+                                    value.updateRoverName(roverName)
+                                }}>
+                                    <option>Curiosity</option>
+                                    <option>Spirit</option>
+                                    <option>Opportunity</option>
+                                </select>
+                            </div>
+                            <div>
+                                Camera type:&nbsp;
+                                <select onChange={ (event) => {
+                                    const cameraType: RoverCameraType = getEnumByEnumValue(RoverCameraType, event.target.value)
+                                    value.updateCameraType(cameraType)
+                                }}>
+                                    {options}
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                )
             }}
-        >
-            <form>
-                <div>
-                    {}
-                    <select onChange={changeSelectOptionHandler}>
-                        <option>Choose a Rover</option>
-                        <option>Curiosity</option>
-                        <option>Spirit</option>
-                        <option>Opportunity</option>
-                    </select>
-                </div>
-                <div>
-                    <select>
-                        {
-                            options
-                        }
-                    </select>
-                </div>
-            </form>
-        </div>
+        </PhotoTypeContext.Consumer>
     );
 };
 
