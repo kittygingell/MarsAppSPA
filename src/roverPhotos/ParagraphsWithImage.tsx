@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import NasaImage from "./NasaImage";
-import NasaParagraph from "./NasaParagraph";
+import NasaImage from "../NasaImage";
+import NasaParagraph from "../NasaParagraph";
 //import styled from 'styled-components';
 
 

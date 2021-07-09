@@ -1,6 +1,6 @@
 import React from 'react'
-import {getEnumByEnumValue, RoverCameraType, RoverName} from "./RoverModel";
-import {PhotoTypeContext} from "./App";
+import {getEnumByEnumValue, RoverCameraType, RoverName} from "../RoverModel";
+import {PhotoTypeContext} from "./RoverPhotoPage";
 
 interface AvailableCameraTypes {
     roverName: RoverName,

@@ -7,6 +7,7 @@ interface RoverPhotosProps {
 const RoverPhotos: React.FC<RoverPhotosProps> = ({img_srcs}) => {
     return (
         <>
+            <p>Retrieved {img_srcs.length} pictures</p>
             {img_srcs.map(src => {
                     return (
                         <img src={src} width="400"/>
