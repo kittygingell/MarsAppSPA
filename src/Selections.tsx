@@ -1,6 +1,8 @@
 import React from 'react'
 import {getEnumByEnumValue, RoverCameraType, RoverName} from "./RoverModel";
 import {PhotoTypeContext} from "./App";
+import './style.css';
+
 
 interface AvailableCameraTypes {
     roverName: RoverName,
@@ -65,7 +67,7 @@ const Selections = () => {
                         <form>
                             <div>
                                 Rover type:&nbsp;
-                                <select onChange={ (event) => {
+                                <select className = "box" onChange={ (event) => {
                                     const roverDict: any = {
                                         'Curiosity': RoverName.curiosity,
                                         'Spirit': RoverName.spirit,
@@ -80,9 +82,10 @@ const Selections = () => {
                                     <option>Opportunity</option>
                                 </select>
                             </div>
+                            <br/>
                             <div>
                                 Camera type:&nbsp;
-                                <select onChange={ (event) => {
+                                <select className = "box" onChange={ (event) => {
                                     const cameraType: RoverCameraType = getEnumByEnumValue(RoverCameraType, event.target.value)
                                     value.updateCameraType(cameraType)
                                 }}>

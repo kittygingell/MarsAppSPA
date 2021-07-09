@@ -1,0 +1,91 @@
+@font-face {
+    font-family: nasa;
+    src: url(nasalization-rg.otf);
+}
+
+div {
+    font-family: nasa;
+    color: white;
+    /*cursor: url("AnyConv.com_rocket.cur"), default;*/
+}
+
+.outer {
+    text-align: center;
+
+}
+
+
+@keyframes pulse2 {
+    0%,100% {
+        background-color: #df1a1a;
+    }
+    25% {
+        background-color: #740e0e;
+    }
+    50% {
+        background-color: #690303 ;
+    }
+    75% {
+        background-color: #fc3d21;
+    }
+}
+
+.heading {
+    font-size: 150%;
+    font-family: nasa;
+    transition: 2.0s linear;
+}
+.heading:hover{
+    color: #df1a1a;
+    transition: 2.0s linear;
+
+}
+.Selector {
+    text-align: center;
+}
+
+.logo{
+    max-height: 10%;
+}
+
+.nav-container {
+    background: #df1a1a;
+    mix-blend-mode: normal;
+    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    margin: -8px -8px 46px;
+    animation: pulse2 20s infinite;
+}
+
+.nav-container button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    float: left;
+    font-size: 110%;
+    font-family: nasa;
+    font-weight: bold;
+    margin: 0px;
+    opacity: 1;
+    outline: none;
+    padding: 17px 17px;
+    transition: 0.25s linear
+}
+
+.nav-container button:hover {
+    cursor: pointer;
+    color: #03224f;
+    border: 3px solid #03224f;
+}
+
+.box {
+    width: 30%;
+    height: 100%;
+    border: 3px solid #999;
+    font-family: nasa;
+    font-size: 14px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+}
+

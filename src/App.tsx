@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
+import './style.css';
 import axios from 'axios'
 import ParagraphsWithImage from "./ParagraphsWithImage";
 import {RoverCameraType, RoverName, RoverPhotoData, getEnumKeyByEnumValue} from "./RoverModel";
@@ -52,9 +52,25 @@ function App() {
                 setCameraType(cameraType)
             }
         }}>
-            <Selections/>
+            <div className ="outer">
+            <div className="nav-container">
+                {/*add new page link below*/}
+                <a href="/Credits.html">
+                    <button id="home-btn" className="active"> View the Earth
+                        <img src="icons/home_white_36dp.svg" alt=""/>
+                    </button>
+                </a>
+                <button id="stat-btn">
+                    <img src="icons/trending_up_white_36dp.svg" alt=""/>
+                </button>
+            </div>
+
+
             <div className="App">
-                <ParagraphsWithImage heading={'NASA stuff'} paragraph1={'Paragraph for NASA stuff'} paragraph2={'Another paragraph'} image={"https://media0.giphy.com/media/3h4EVXAvarDaaRaeYX/source.gif"}/>
+                <ParagraphsWithImage heading={'NASA INFORMATION'} paragraph1={'NASA stands for National Aeronautics and Space Administration.'} paragraph2={'Choose your rover and camera to view up to 5 images'} image={"https://im7.ezgif.com/tmp/ezgif-7-6ebeaf394cde.gif"}/>
+                <div className="Selector">
+                    <Selections/>
+                </div>
                 <PhotoTypeContext.Consumer>
                     {value => {
                         return (
@@ -67,15 +83,19 @@ function App() {
                                 })
                                 setImgSrcs(imgSources)
                             }}/>
+
                         )
                     }}
                 </PhotoTypeContext.Consumer>
 
                 <div>
+                    <br/>
                     <RoverPhotos img_srcs={imgSrcs}/>
                 </div>
             </div>
+            </div>
         </PhotoTypeContext.Provider>
+
   );
 }
 
