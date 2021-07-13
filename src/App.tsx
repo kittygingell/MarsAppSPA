@@ -22,10 +22,12 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <div>
-                    <Link to="/">Home </Link>
-                    <Link to="/epic">Epic</Link>
-                </div>
+                {/*<div>*/}
+                {/*    <Link to="/">Home </Link>*/}
+                {/*    <Link to="/epic">Epic</Link>*/}
+                {/*</div>*/}
+                <h1>EPIC</h1>
+                <p><strong>E</strong>arth <strong>P</strong>olychromatic <strong>I</strong>maging <strong>C</strong>amera</p>
                 <Switch>
                     <Route path={'/'} component={RoverPhotoPage} exact/>
                     <Route path={'/epic'} component={EpicPage} exact/>
