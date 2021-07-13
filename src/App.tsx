@@ -67,7 +67,7 @@ function App() {
 
 
             <div className="App">
-                <ParagraphsWithImage heading={'NASA INFORMATION'} paragraph1={'NASA stands for National Aeronautics and Space Administration.'} paragraph2={'Choose your rover and camera to view up to 5 images'} image={"https://im7.ezgif.com/tmp/ezgif-7-6ebeaf394cde.gif"}/>
+                <ParagraphsWithImage heading={'NASA INFORMATION'} paragraph1={'NASA stands for National Aeronautics and Space Administration.'} paragraph2={'Choose your rover and camera to view up to 5 images'} image={"https://im.ezgif.com/tmp/ezgif-1-0b88fcf57f10.gif"}/>
                 <div className="Selector">
                     <Selections/>
                 </div>

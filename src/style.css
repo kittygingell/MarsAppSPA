@@ -6,7 +6,6 @@
 div {
     font-family: nasa;
     color: white;
-    /*cursor: url("AnyConv.com_rocket.cur"), default;*/
 }
 
 .outer {
@@ -36,7 +35,7 @@ div {
     transition: 2.0s linear;
 }
 .heading:hover{
-    color: #df1a1a;
+    color: chartreuse;
     transition: 2.0s linear;
 
 }
